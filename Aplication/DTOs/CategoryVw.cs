@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aplication.DTOs
 {
-    public class CategoryVm
+    public class CategoryVw
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Name is required")]

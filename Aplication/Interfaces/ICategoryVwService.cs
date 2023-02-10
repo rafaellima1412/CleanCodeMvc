@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Aplication.Interfaces
 {
-    public interface ICategoryVwService : IGenericService<CategoryVm>
+    public interface ICategoryVwService : IGenericService<CategoryVw>
     {
-        Task AddAsync(CategoryVm entity);
+        Task AddAsync(CategoryVw entity);
         Task CreateAsync(Category category);
         Task DeleteAsync(int? id);
         Task GetByIdAsync(int? id);
-        Task RemoveAsync(CategoryVm category);
+        Task RemoveAsync(CategoryVw category);
     }
 }

@@ -20,7 +20,7 @@ namespace Aplication.Services
             _categoryRepository = categoryRepository;
             _mapper = mapper;
         }
-        public async Task AddAsync(CategoryVm entity)
+        public async Task AddAsync(CategoryVw entity)
         {
             var category = _mapper.Map<Category>(entity);
             if (category == null)
@@ -28,51 +28,66 @@ namespace Aplication.Services
             await _categoryRepository.CreateAsync(category);
         }
 
-        public Task CreateAsync(Category category)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task DeleteAsync(int? id)
+        public async Task DeleteAsync(int? id)
         {
-            var category = _categoryRepository.GetById(id).Result;
+            var category = _categoryRepository.GetByID(id).Result;
             if (category == null)
                 throw new Exception("Error remove entity");
             await _categoryRepository.RemoveAsync(category);
         }
 
 
-        public Task GetByIdAsync(int? id)
+        public async Task GetByIdAsync(int? id)
+        {
+            var category = await _categoryRepository.GetByID(id);
+            if (category == null) throw new Exception("error id entity");
+            _mapper.Map<CategoryVw>(category);
+        }
+
+
+
+        public async Task UpdateAsync(CategoryVw entity)
+        {
+            var category = _mapper.Map<Category>(entity);
+            if (category == null) throw new Exception("error update entity");
+            await _categoryRepository.UpdateAsync(category);
+        }
+
+        public async Task<IEnumerable<CategoryVw>> GetListAsync()
+        {
+            var categories = await _categoryRepository.GetListGeneric();
+            if (categories == null) throw new Exception("error list entity");
+            return (IEnumerable<CategoryVw>)_mapper.Map<CategoryVw>(categories);
+        }
+
+        Task ICategoryVwService.CreateAsync(Category category)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<CategoryVm>> GetListAsync()
+        Task ICategoryVwService.RemoveAsync(CategoryVw category)
         {
             throw new NotImplementedException();
         }
 
-        public Task RemoveAsync(CategoryVm category)
+        Task<CategoryVw> IGenericService<CategoryVw>.GetByIdAsync(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<CategoryVm> UpdateAsync(CategoryVm entity)
+        Task<CategoryVw> IGenericService<CategoryVw>.AddAsync(CategoryVw entity)
         {
             throw new NotImplementedException();
         }
 
-        Task<CategoryVm> IGenericService<CategoryVm>.AddAsync(CategoryVm entity)
+
+        Task<CategoryVw> IGenericService<CategoryVw>.DeleteAsync(int? id)
         {
             throw new NotImplementedException();
         }
 
-        Task<CategoryVm> IGenericService<CategoryVm>.DeleteAsync(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<CategoryVm> IGenericService<CategoryVm>.GetByIdAsync(int? id)
+        Task<CategoryVw> IGenericService<CategoryVw>.UpdateAsync(CategoryVw entity)
         {
             throw new NotImplementedException();
         }

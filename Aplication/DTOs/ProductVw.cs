@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace Aplication.DTOs
 {
-    public class ProductVm
+    public class ProductVw
     {  
         public int Id { get; set; }
         [Required(ErrorMessage = "Name is required")]

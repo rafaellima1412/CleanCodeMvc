@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aplication.Interfaces
 {
-    public  interface IProductVwService : IGenericService<ProductVm>
+    public  interface IProductVwService : IGenericService<ProductVw>
     {
     }
 }
