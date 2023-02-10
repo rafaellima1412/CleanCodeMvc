@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Infra_Data.Configuration
 {
-    public class categoryCofiguration : IEntityTypeConfiguration<Category>
+    public class CategoryCofiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
