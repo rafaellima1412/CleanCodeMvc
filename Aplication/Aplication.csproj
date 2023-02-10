@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Mappings\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Products\Command\" />
     <Folder Include="Products\Handlers\" />
     <Folder Include="Products\Query\" />
