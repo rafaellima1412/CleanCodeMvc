@@ -1,38 +1,49 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using Infra_Data.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Infra_Data.Repositories
 {
-    internal class ProductRepository : IProductRepository
+    public class ProductRepository : IProductRepository
     {
-        public Task<Product> CreateAsync(Product entity)
+        private readonly AppDbContext _context;
+
+        public async Task<Product> CreateAsync(Product entity)
         {
-            throw new NotImplementedException();
+            _context.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Product> GetByID(int? id)
+        public async Task<Product> GetByID(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Products.Include(x => x.Category).FirstOrDefaultAsync();
         }
 
-        public Task<IEnumerable<Product>> GetListGeneric()
+        public async Task<IEnumerable<Product>> GetListGeneric()
         {
-            throw new NotImplementedException();
+            return await _context.Products.ToListAsync();
         }
 
-        public Task<Product> RemoveAsync(Product entity)
+        public async Task<Product> RemoveAsync(Product entity)
         {
-            throw new NotImplementedException();
+            _context.Remove(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Product> UpdateAsync(Product entity)
+        public async Task<Product> UpdateAsync(Product entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }
