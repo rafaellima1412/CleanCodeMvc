@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Aplication.Interfaces
 {
-    public  interface IProductVwService : IGenericService<ProductVw>
+    public interface IProductVwService : IGenericService<ProductVw>
     {
+        Task<ProductVw> AddAsync(ProductVw entity);
     }
 }
