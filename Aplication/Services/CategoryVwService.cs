@@ -71,9 +71,11 @@ namespace Aplication.Services
             throw new NotImplementedException();
         }
 
-        Task<CategoryVw> IGenericService<CategoryVw>.GetByIdAsync(int? id)
+        async Task<CategoryVw> IGenericService<CategoryVw>.GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            var category = await _categoryRepository.GetByID(id); 
+            if(category == null) throw new Exception("Error id Entity");
+            return _mapper.Map<CategoryVw>(category);
         }
 
         Task<CategoryVw> IGenericService<CategoryVw>.AddAsync(CategoryVw entity)
@@ -88,6 +90,11 @@ namespace Aplication.Services
         }
 
         Task<CategoryVw> IGenericService<CategoryVw>.UpdateAsync(CategoryVw entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateAsync(Category category)
         {
             throw new NotImplementedException();
         }
