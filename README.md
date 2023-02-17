@@ -18,5 +18,6 @@ Adicione a pasta Data na camada de infraestrutura que é usada para adicionar a 
 - Context -> Propriedades do DbSet, para migração.
 
 ## INFRASTRUTURE
+Camada onde vai ter a  Injeção de dependência.
 - Injection -> E um condutor que vai depender apenas do pacote domain para executar as regras de negocio.
 O código nesta camada contém regras de negócios específicas do aplicativo. Ele encapsula e implementa todos os casos de uso do sistema. Esses casos de uso orquestram o fluxo de dados  para as entidades e direcionam essas entidades a usar suas regras de negócios  para atingir as metas do caso de uso.
