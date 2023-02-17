@@ -8,7 +8,7 @@ Camada onde contem todos detalhes técnicos configurações e implementações.
 - Services -> Pasta onde estar todos serviços personalizados do sistema.
 
 ## DOMAIN
-Camada onde fica a interface do Projeto. Sem dependencias externas.
+ É aqui que você coloca as regras de negócios que representa a alma do seu aplicativo, a funcionalidade central do seu projeto. Sem dependencias externas.
 - Entities -> atributos do sistema.
 - Interfaces -> interface de comunicação.
 
